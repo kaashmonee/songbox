@@ -6,13 +6,20 @@ import os
 def main():
     # print("This is running.")
     # getting the classifiers that come with opencv
+
+    faceCascadeClassifierPath = (
+        "./learncv/assets/classifiers/haarcascade_frontalface_default.xml"
+    )
+
+    eyeCascadeClassifierPath = (
+        "./learncv/assets/classifiers/haarcascade_eye.xml"
+    )
+    
     print("cur path:", os.getcwd())
 
-    faceCascade = cv2.CascadeClassifier(
-        "./learncv/assets/classifiers/haarcascade_frontalface_default.xml")
+    faceCascade = cv2.CascadeClassifier(faceCascadeClassifierPath)
     # print("face cascade", faceCascade)
-    eyeCascade = cv2.CascadeClassifier(
-        "./learncv/assets/classifiers/haarcascade_eye.xml")
+    eyeCascade = cv2.CascadeClassifier(eyeCascadeClassifierPath)
     # print("eyeCascade", eyeCascade)
     
     # print("This is running")
@@ -25,6 +32,7 @@ def main():
 
     # not sure what this line does
     faces = faceCascade.detectMultiScale(gray, 1.3, 5)
+    # detect multiscale does the detection and faceCascade is the classifier
     print(faces)
     for (x, y, w, h) in faces:
         print("x, y, w, h", x, y, w, h)

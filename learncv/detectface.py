@@ -13,13 +13,13 @@ def main():
     # print("face cascade", faceCascade)
     eyeCascade = cv2.CascadeClassifier(
         "./learncv/assets/classifiers/haarcascade_eye.xml")
-    print("eyeCascade", eyeCascade)
+    # print("eyeCascade", eyeCascade)
     
     # print("This is running")
     
-    img = cv2.imread("./learncv/assets/images/myface.jpg")
-    gray = cv2.imread("./learncv/assets/images/myface.jpg", 0)
-    # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.imread("./learncv/assets/images/twopeoplewitheyes.png")
+    # gray = cv2.imread("./learncv/assets/images/myface.jpg", 0)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # print("This is running.")
 
@@ -34,6 +34,7 @@ def main():
         eyes = eyeCascade.detectMultiScale(roiGray)
 
         for (ex, ey, ew, eh) in eyes:
+            print("eyes:", ex, ey, ew, eh)
             cv2.rectangle(roiColor, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
     
     cv2.imshow("My Face", img)

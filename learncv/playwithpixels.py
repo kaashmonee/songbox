@@ -4,7 +4,7 @@ import numpy as np
 
 def playWithPixels():
     # getting the image
-    img = cv2.imread("./assets/basketball.png")
+    img = cv2.imread("./learncv/assets/basketball.png")
 
     print(type(img))
 
@@ -33,9 +33,14 @@ def playWithPixels():
     print("img datatype:", img.dtype)
 
     # manipulating certain colors in the image:
-    print("Setting all the reds in the image to 0 using Numpy indexing:")
+    print("Setting all the reds in the image to 0 using Numpy indexing...")
     img[:,:,2] = 0
 
+    cv2.imshow("image no reds", img)
+    
+    cv2.waitKey(0)
+
+    ## can do other border things, not included here
 
 
 def main():

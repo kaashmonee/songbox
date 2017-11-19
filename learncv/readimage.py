@@ -5,7 +5,7 @@ import random
 
 def loadImage():
     # load a color image as grayscale
-    img = cv2.imread("./assets/basketball.png", 0)
+    img = cv2.imread("./learncv/assets/basketball.png", 0)
 
     # showing the image
     cv2.imshow("image", img)
@@ -17,7 +17,7 @@ def loadImage():
         cv2.destroyAllWindows()
     # if k is the s key, it will save and close windows
     elif k == ord("s"):
-        cv2.imwrite("./assets/img_grascale.png", img)
+        cv2.imwrite("./learncv/assets/grayscale.png", img)
         cv2.destroyAllWindows()
     print("reaching here")
 

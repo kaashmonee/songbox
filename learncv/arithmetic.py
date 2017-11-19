@@ -8,8 +8,9 @@ def blendImages():
     img1 = cv2.imread("./learncv/assets/basketball.png")
     img2 = cv2.imread("./learncv/assets/lebron.jpg")
 
-    roi1 = img1[0:0, 100:100]
-    roi2 = img2[0:0, 100:100]
+    roi1 = img1[50:75, 110:135]
+    roi2 = img2[50:75, 110:135]
+    print("type of roi:", type(roi1))
 
     weight1, weight2, = 0.7, 0.3
     imageSum = cv2.addWeighted(roi1, weight1, roi2, weight2, 0)

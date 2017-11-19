@@ -10,11 +10,15 @@ def main():
     eyeCascade = cv2.CascadeClassifier(utils.EYE_CASCADE_CLASSIFIER_PATH)
     
     videoCapture = cv2.VideoCapture(0)
+    print("Video capture:", videoCapture)
+    videoCapture.open(0)
     # print(videoCapture)
 
     while True:
         # reads stuff in from the video camera
         ret, frame = videoCapture.read()
+        ## BUG -- the frame object is None, but the videocapture object is still
+        # there. not sure what the issue is.
         print("frame:",frame)
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)

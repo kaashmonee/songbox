@@ -41,7 +41,7 @@ def main():
         roiColor = img[y:y+h, x:x+w]
         eyes = eyeCascade.detectMultiScale(roiGray)
 
-        for (ex, ey, ew, eh) in eyes:
+        for (ex, ey, ew, eh) in eyes[:2]:
             print("eyes:", ex, ey, ew, eh)
             cv2.rectangle(roiColor, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
     

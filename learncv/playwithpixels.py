@@ -26,6 +26,17 @@ def playWithPixels():
 
     print(px)
 
+    print("image shape:", img.shape)
+    print("image size:", img.size)
+
+    # getting the image datatype
+    print("img datatype:", img.dtype)
+
+    # manipulating certain colors in the image:
+    print("Setting all the reds in the image to 0 using Numpy indexing:")
+    img[:,:,2] = 0
+
+
 
 def main():
     playWithPixels()

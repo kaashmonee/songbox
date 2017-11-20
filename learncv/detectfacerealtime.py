@@ -9,13 +9,14 @@ def main():
     faceCascade = cv2.CascadeClassifier(utils.FACE_CASCADE_CLASSIFIER_PATH)
     eyeCascade = cv2.CascadeClassifier(utils.EYE_CASCADE_CLASSIFIER_PATH)
     
-    videoCapture = cv2.VideoCapture(0)
+    videoCapture = cv2.VideoCapture(-1)
     print("Video capture:", videoCapture)
-    videoCapture.open(0)
+    videoCapture.open(-1)
     # print(videoCapture)
 
     while True:
         # reads stuff in from the video camera
+        print("video capture reading:", videoCapture.read())
         ret, frame = videoCapture.read()
         ## BUG -- the frame object is None, but the videocapture object is still
         # there. not sure what the issue is.

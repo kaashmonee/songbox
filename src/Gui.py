@@ -13,6 +13,7 @@ class SongDash(QtGui.QMainWindow):
         # determines where on the screen it it will show up and how big the 
         # screen should be
         self.setGeometry(50, 50, 500, 500)
+        self.actions = dict()
         self.setWindowTitle("SongBox")
         # setting a window icon (definitely change later)
         self.setWindowIcon(QtGui.QIcon(SongDash.MUSIC_ICON))
@@ -22,11 +23,21 @@ class SongDash(QtGui.QMainWindow):
         extractAction.setShortcut("Ctrl+Q")
         extractAction.setStatusTip("Leave the app")
         extractAction.triggered.connect(self.closeApplication)
+        # appending file to dictionary
+        self.actions["QuitAppFile"] = extractAction
+
+        #creating a new menu item
+        action2 = QtGui.QAction("&Add button", self)
+        action2.setShortcut("Ctrl+B")
+        extractAction.setStatusTip("Creating button.")
+        extractAction.triggered.connect(self.createButton)
+        self.actions["createButton"] = action2
         
         # add the menu item to the previous item
         mainMenu = self.menuBar()
         fileMenu = mainMenu.addMenu("&File")
         fileMenu.addAction(extractAction)
+        fileMenu.addAction(self.actions["createButton"])
 
         self.statusBar()
 
@@ -52,6 +63,13 @@ class SongDash(QtGui.QMainWindow):
     def closeApplication(self):
         print("Custom functionular region!")
         sys.exit()
+
+    def createButton(self):
+        print("Create button getting triggered")
+        btn = QtGui.QPushButton("New Button", self)
+        btn.move(200, 200)
+        btn.resize(btn.sizeHint())
+
 
 
 # main function for testing purposes

@@ -4,7 +4,7 @@ from PyQt4 import QtGui, QtCore
 
 
 
-class SongDash(QtGui.QWidget):
+class SongDash(QtGui.QMainWindow):
     # basically I can call different functions to open and trigger different 
     # pages
     MUSIC_ICON = "./src/assets/musicalnote.png"
@@ -16,6 +16,20 @@ class SongDash(QtGui.QWidget):
         self.setWindowTitle("SongBox")
         # setting a window icon (definitely change later)
         self.setWindowIcon(QtGui.QIcon(SongDash.MUSIC_ICON))
+
+        # creating a menu item
+        extractAction = QtGui.QAction("&Quit the app", self)
+        extractAction.setShortcut("Ctrl+Q")
+        extractAction.setStatusTip("Leave the app")
+        extractAction.triggered.connect(self.closeApplication)
+        
+        # add the menu item to the previous item
+        mainMenu = self.menuBar()
+        fileMenu = mainMenu.addMenu("&File")
+        fileMenu.addAction(extractAction)
+
+        self.statusBar()
+
         self.home()
     
     # shows the window
@@ -26,10 +40,18 @@ class SongDash(QtGui.QWidget):
         btn = QtGui.QPushButton("Quit", self)
         # if the button is clicked, finds instance of QCore application and 
         # quits
-        btn.resize(100, 50)
+
+        # size hint resizes it to whatever size it thinks is appropriate
+        btn.resize(btn.sizeHint())
         btn.move(100, 100)
-        btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
-        self.show()
+        # binding buttons to custom functions 
+        btn.clicked.connect(self.closeApplication)
+        #QtCore.QCoreApplication.instance().quit)
+        # self.show()
+
+    def closeApplication(self):
+        print("Custom functionular region!")
+        sys.exit()
 
 
 # main function for testing purposes

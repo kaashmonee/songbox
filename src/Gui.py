@@ -5,6 +5,8 @@ from PyQt4 import QtGui, QtCore
 
 
 class SongDash(QtGui.QWidget):
+    # basically I can call different functions to open and trigger different 
+    # pages
     MUSIC_ICON = "./src/assets/musicalnote.png"
     def __init__(self):
         super().__init__()
@@ -24,6 +26,8 @@ class SongDash(QtGui.QWidget):
         btn = QtGui.QPushButton("Quit", self)
         # if the button is clicked, finds instance of QCore application and 
         # quits
+        btn.resize(100, 50)
+        btn.move(100, 100)
         btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
         self.show()
 

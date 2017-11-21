@@ -10,12 +10,16 @@ class SongDash(QtGui.QWidget):
         # screen should be
         self.setGeometry(50, 50, 500, 500)
         self.setWindowTitle("SongBox")
+        # setting a window icon
+        self.setWindowIcon(QtGui.QIcon("./learncv/assets/images/lebron.jpg"))
     
     # shows the window
     def _show(self): self.show()
 
 
 # main function for testing purposes
+# this file will probably be imported elsewhere, but main function is here for 
+# testing
 def main(): 
     app = QtGui.QApplication(sys.argv)
     dash = SongDash()

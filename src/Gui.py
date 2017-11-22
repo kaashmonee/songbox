@@ -65,7 +65,7 @@ class SongDash(QtGui.QMainWindow):
 
         # creating a toolar
         self.toolBar = self.addToolBar("Testing toolbar")
-        # self.toolBar.addAction(extractAction)
+        # self.toolBar.addAction(getChe)
 
         # checkbox
         checkBox = QtGui.QCheckBox("Check the box!")

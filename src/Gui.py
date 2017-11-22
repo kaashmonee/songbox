@@ -2,7 +2,7 @@ import sys
 from PyQt4 import QtGui, QtCore
 # QtCore is used for event handling things
 
-# learned PyQt using tutorial from sentdex located here: 
+# learned PyQt using tutorial from tutorial by sentdex located here: 
 # https://youtu.be/mnYRRhKotbQ
 
 
@@ -63,6 +63,15 @@ class SongDash(QtGui.QMainWindow):
         #QtCore.QCoreApplication.instance().quit)
         # self.show()
 
+        # creating a toolar
+        self.toolBar = self.addToolBar("Testing toolbar")
+        # self.toolBar.addAction(extractAction)
+
+        # checkbox
+        checkBox = QtGui.QCheckBox("Check the box!")
+        # it will run the printSomething function
+        checkBox.stateChanged.connect(self.printSomething)
+
     def closeApplication(self):
         # print("Custom functionular region!")
         choice = QtGui.QMessageBox.question(self, "Quitting!", 
@@ -81,6 +90,11 @@ class SongDash(QtGui.QMainWindow):
         btn = QtGui.QPushButton("New Button", self)
         btn.move(200, 200)
         btn.resize(btn.sizeHint())
+
+    def printSomething(self):
+        label = QtGui.QLabel()
+        label.setText("Testing label!")
+        label.setAlignment(Qt.AlignCenter)
 
 
 

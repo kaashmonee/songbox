@@ -61,8 +61,17 @@ class SongDash(QtGui.QMainWindow):
         # self.show()
 
     def closeApplication(self):
-        print("Custom functionular region!")
-        sys.exit()
+        # print("Custom functionular region!")
+        choice = QtGui.QMessageBox.question(self, "Quitting!", 
+                                            "Really quit?",
+                                            QtGui.QMessageBox.Yes | 
+                                            QtGui.QMessageBox.No)
+        if choice == QtGui.QMessageBox.Yes:
+            print("Exiting!")
+            sys.exit()
+        else:
+            pass
+        # sys.exit()
 
     def createButton(self):
         print("Create button getting triggered")

@@ -2,6 +2,9 @@ import sys
 from PyQt4 import QtGui, QtCore
 # QtCore is used for event handling things
 
+# learned PyQt using tutorial from sentdex located here: 
+# https://youtu.be/mnYRRhKotbQ
+
 
 
 class SongDash(QtGui.QMainWindow):

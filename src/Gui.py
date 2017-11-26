@@ -4,8 +4,6 @@ import pygame
 import pygame.camera
 # QtCore is used for event handling things
 
-# learned PyQt using tutorial from tutorial by sentdex located here: 
-# https://youtu.be/mnYRRhKotbQ
 
 
 

@@ -1,0 +1,6 @@
+get pyqt4 working with a virtualenv
+finish the GUI
+the GUI must include the following:
+	1. Take pictures
+	2. Save pictures
+	3. after taking pictures, should take you to a new page and give you results from spotify

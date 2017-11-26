@@ -1,5 +1,7 @@
 import sys
 from PyQt4 import QtGui, QtCore
+import pygame
+import pygame.camera
 # QtCore is used for event handling things
 
 # learned PyQt using tutorial from tutorial by sentdex located here: 
@@ -59,7 +61,7 @@ class SongDash(QtGui.QMainWindow):
         btn.resize(btn.sizeHint())
         btn.move(100, 100)
         # binding buttons to custom functions 
-        btn.clicked.connect(self.closeApplication)
+        btn.clicked.connect(self.takePicture)
         #QtCore.QCoreApplication.instance().quit)
         # self.show()
 
@@ -95,6 +97,14 @@ class SongDash(QtGui.QMainWindow):
         label = QtGui.QLabel()
         label.setText("Testing label!")
         label.setAlignment(Qt.AlignCenter)
+
+    def takePicture():
+        pygame.camera.init()
+        pygame.camera.list_camera()
+        cam = pygame.camera.Camera("/dev/video0", (640, 480))
+        cam.start()
+        img = cam.get_image()
+        pygame.image.save(img, "./src/assets/captured.jpg")
 
 
 

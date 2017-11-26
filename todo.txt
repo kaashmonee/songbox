@@ -4,3 +4,10 @@ the GUI must include the following:
 	1. Take pictures
 	2. Save pictures
 	3. after taking pictures, should take you to a new page and give you results from spotify
+
+General todo list:
+1. finish gui
+2. incorporate spotify
+3. incorporate neural network
+4. incorporate neural network syncing up with gui and spotify and hopefully everything works
+

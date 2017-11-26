@@ -6,7 +6,6 @@ import pygame.camera
 
 
 
-
 class SongDash(QtGui.QMainWindow):
     # basically I can call different functions to open and trigger different 
     # pages
@@ -96,12 +95,14 @@ class SongDash(QtGui.QMainWindow):
         label.setText("Testing label!")
         label.setAlignment(Qt.AlignCenter)
 
-    def takePicture():
+    def takePicture(self):
         pygame.camera.init()
+        print("camera initialized")
         pygame.camera.list_camera()
         cam = pygame.camera.Camera("/dev/video0", (640, 480))
         cam.start()
         img = cam.get_image()
+        print("Image captured!")
         pygame.image.save(img, "./src/assets/captured.jpg")
 
 

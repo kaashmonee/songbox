@@ -1,7 +1,9 @@
 import sys
 from PyQt4 import QtGui, QtCore
+import cv2
 import pygame
 import pygame.camera
+import time
 # QtCore is used for event handling things
 
 
@@ -96,14 +98,19 @@ class SongDash(QtGui.QMainWindow):
         label.setAlignment(Qt.AlignCenter)
 
     def takePicture(self):
+        import pygame.camera
         pygame.camera.init()
-        print("camera initialized")
-        pygame.camera.list_camera()
-        cam = pygame.camera.Camera("/dev/video0", (640, 480))
+        # taking the image by initializing the camera location
+        cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])
+        # sleeping
+        time.sleep(2)
         cam.start()
+        # grabbing the image
         img = cam.get_image()
-        print("Image captured!")
-        pygame.image.save(img, "./src/assets/captured.jpg")
+        import pygame.image
+        # saving the image
+        pygame.image.save(img, "./src/assets/captured.png")
+        cam.stop()
 
 
 

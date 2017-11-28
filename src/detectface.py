@@ -64,7 +64,7 @@ class FaceDetector:
 
     def hasFaces(self):
         # self.showFace()
-        return True if len(self.faces) == 0 else False
+        return True if len(self.faces) != 0 else False
 
     def getROIColor(self):
         return self.roiColor

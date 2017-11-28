@@ -17,6 +17,9 @@ import argparse
 # if __name__ == "__main__":
 #     main()
 
+LANDMARKS_CLASSIFIER = "./src/assets/shape_predictor_68_face_landmarks.dat"
+IMAGE_PATH = "./src/assets/captured.png"
+
 def shapeToArray(shape, dtype="int"):
     # getting a list of x, y coordinates
     coords = np.zeros((68, 2), dtype = dtype)
@@ -26,3 +29,7 @@ def shapeToArray(shape, dtype="int"):
         coords[i] = (shape.part(i).x, shape.part(i).y)
 
     return coords
+
+# detector = dlib.get_frontal_face_detector()
+predictor = dlib.shape_predictor(LANDMARKS_CLASSIFIER)
+

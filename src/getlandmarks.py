@@ -21,6 +21,10 @@ from detectface import FaceDetector
 
 # detector = dlib.get_frontal_face_detector()
 
+## READ
+## self.faces is the image in which we are trying to detect faces and facial
+# landmarks
+
 class LandmarkRetriever:
 
     # class attributes
@@ -31,18 +35,20 @@ class LandmarkRetriever:
 
     def __init__(self, image=IMAGE_PATH):
         self.faces = FaceDetector(image)
+        self.faceCoordinates = None
         if not self.faces.hasFaces():
             raise Exception("No faces found! Please select another image.")
         self.getLandmarks()
         
     def getLandmarks(self):
-        for (x, y, w, h) in self.faces.faces:
-            rect = dlib.rectangle(left=x, top=y, right=x+w, bottom=y+h)
+        for rect in self.faces.dlibfaces:
+            # rect = dlib.rectangle(left=x, top=y, right=x+w, bottom=y+h)
             # gets the region of interest from the grayscale of the image
-            roiGray = self.faces.gray[x:x+w, y:y+h]
-            shape = LandmarkRetriever.predictor(roiGray, rect)
+            # roiGray = self.faces.gray[x:x+w, y:y+h]
+            shape = LandmarkRetriever.predictor(self.faces.gray, rect)
             print("Getting here")
-            for (x, y) in shape:
+            self.faceCoordinates = LandmarkRetriever.shapeToArray(shape)
+            for (x, y) in LandmarkRetriever.shapeToArray(shape):
                 print("x:", x, "y:", y)
                 cv2.circle(self.faces.img, (x, y), 1, (0, 0, 255), -1)
     
@@ -50,7 +56,8 @@ class LandmarkRetriever:
         cv2.imshow("Landmarks", self.faces.img)
         cv2.waitKey(0)
 
-
+    # function inspired from Aiden Rosebrock
+    # converts shape object to numpy array
     @staticmethod
     def shapeToArray(shape, dtype="int"):
         # getting a list of x, y coordinates

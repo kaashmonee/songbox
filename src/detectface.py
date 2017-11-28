@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import os
+import dlib
 
 # hold training data
 
@@ -12,6 +13,10 @@ class FaceDetector:
     EYE_CASCADE_CLASSIFIER_PATH = (
         "./learncv/assets/classifiers/haarcascade_eye.xml"
     )
+
+    # getting the frontal face detector
+    detector = dlib.get_frontal_face_detector()
+
     def __init__(self, image):
         self.faceCascade = cv2.CascadeClassifier(
             FaceDetector.FACE_CASCADE_CLASSIFIER_PATH
@@ -28,6 +33,9 @@ class FaceDetector:
         self.img = cv2.imread(image)
         self.gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
         self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
+        # uses dlib instead of opencv...i think this might resolve the issue
+        # ive been having. 
+        self.dlibfaces = FaceDetector.detector(self.gray, 0)
 
     def getRegionsOfInterest(self):
         pass

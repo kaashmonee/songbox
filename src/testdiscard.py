@@ -5,6 +5,7 @@ import argparse
 import imutils
 import dlib
 import cv2
+import inspect
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -24,6 +25,16 @@ image = cv2.imread(args["image"])
 image = imutils.resize(image, width=500)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+
+def get_public_variables(obj):
+    return [(name, value) for name, value
+            in inspect.getmembers(obj, lambda x: not callable(x))
+            if not name.startswith('_')]
+
 # detect faces in the grayscale image
 rects = detector(gray, 1)
+variables = get_public_variables(rects)
+print("variables:", variables)
 print(rects)
+
+

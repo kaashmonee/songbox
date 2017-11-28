@@ -15,7 +15,7 @@ class FaceDetector:
     )
 
     # getting the frontal face detector
-    detector = dlib.get_frontal_face_detector()
+    dlibDetector = dlib.get_frontal_face_detector()
 
     def __init__(self, image):
         self.faceCascade = cv2.CascadeClassifier(
@@ -35,7 +35,7 @@ class FaceDetector:
         self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
         # uses dlib instead of opencv...i think this might resolve the issue
         # ive been having. 
-        self.dlibfaces = FaceDetector.detector(self.gray, 0)
+        self.dlibfaces = FaceDetector.dlibDetector(self.gray, 0)
 
     def getRegionsOfInterest(self):
         pass

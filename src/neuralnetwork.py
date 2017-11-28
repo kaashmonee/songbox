@@ -15,7 +15,26 @@ class NeuralNetwork:
         self.init = tf.initialize_all_variables()
 
     def buildModel(self):
-        tf.nn.softmax(tf.matmul(tf.reshape(self.X)))
+        # builds the model
+        # this reshapes self.X into a 2d tensor, multiplies it by the weights 
+        # function, and adds the biases
+        # after adding the biases, applies the softmax activation function
+        # you can think of the activation function as the function required to 
+        # activate the neuron 
+        Y = tf.nn.softmax(tf.matmul(tf.reshape(self.X, [-1, 784]), W) + b)
+        print("Y:", Y)
+        sys.exit()
+        # placeholder for the correct labels
+        Y_ = tf.placeholder(tf.float32, [None, 10])
+
+        # loss function
+        crossEntropy = -tf.reduce_sum(Y * tf.log(Y))
+
+        # % of correct answers found in the batch
+        isCorrect = tf.equal(tf.argmax(Y, 1), tf.argmax(Y_, 1))
+        accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 
 
-print("Running till here!")
+
+n = NeuralNetwork()
+n.buildModel()

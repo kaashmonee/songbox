@@ -27,11 +27,12 @@ class FaceDetector:
     def readImage(self, image):
         self.img = cv2.imread(image)
         self.gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+        self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
 
     def showFace(self):
         # if there are no faces, then it shits itself and crashes...will 
         # fix this later to ensure that it lets the user know
-        self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
+        # self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
         print("getting here")
         if len(self.faces) == 0:
             raise Exception("Couldn't detect face in image...please select"
@@ -45,13 +46,13 @@ class FaceDetector:
             cv2.rectangle(self.img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # creates a gray and a color image. the roi stands for 
             # region of interest
-            roiGray = self.gray[y:y + h, x:x + w]
-            roiColor = self.img[y:y + h, x:x + w]
+            self.roiGray = self.gray[y:y + h, x:x + w]
+            self.roiColor = self.img[y:y + h, x:x + w]
             # for each x, y, w, h in the eyes, create rectangles
-            self.eyes = self.eyesCascade.detectMultiScale(roiGray)
+            self.eyes = self.eyesCascade.detectMultiScale(self.roiGray)
 
             for (ex, ey, ew, eh) in self.eyes[:2]:
-                cv2.rectangle(roiColor, (ex, ey), 
+                cv2.rectangle(self.roiColor, (ex, ey), 
                              (ex+ew, ey+eh), (0, 255, 2), 2)
             # show the image
             cv2.imshow("Face", self.img)
@@ -59,10 +60,18 @@ class FaceDetector:
             cv2.destroyAllWindows()
 
     def hasFaces(self):
+        # self.showFace()
         return True if len(self.faces) == 0 else False
+
+    def getROIColor(self):
+        return self.roiColor
+    
+    def getROIGray(self):
+        return self.roiGray
     
 def main():
     f = FaceDetector("./src/assets/captures.png")
+    print(f.getROIColor, f.getROIGray)
     f.showFace()
 
 

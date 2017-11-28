@@ -3,6 +3,7 @@ from PyQt4 import QtGui, QtCore
 import cv2
 import pygame
 import pygame.camera
+import pygame.image
 import time
 # QtCore is used for event handling things
 

@@ -20,25 +20,34 @@ from src.detectface import FaceDetector
 
 
 # detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(LANDMARKS_CLASSIFIER)
 
 class LandmarkRetriever:
 
     # class attributes
     LANDMARKS_CLASSIFIER = "./src/assets/shape_predictor_68_face_landmarks.dat"
     IMAGE_PATH = "./src/assets/captured.png"
+    predictor = dlib.shape_predictor(LandmarkRetriever.LANDMARKS_CLASSIFIER)
 
-    def __init__(self, image):
-        self.face = FaceDetector(image)
-        if not self.face.hasFaces():
+
+    def __init__(self, image=LandmarkRetriever.IMAGE_PATH):
+        self.faces = FaceDetector(image)
+        if not self.faces.hasFaces():
             raise Exception("No faces found! Please select another image.")
         
     def getLandmarks(self):
-        for (x, y, w, h) in self.face:
+        for (x, y, w, h) in self.faces:
             rect = dlib.rectangle(left=x, top=y, width=w, height=h)
-            
+            # gets the region of interest from the grayscale of the image
+            roiGray = self.faces.gray[x:x+w, y:y+h]
+            shape = LandmarkRetriever.predictor(roiGray, rect)
 
-        
+            for (x, y) in shape:
+                cv2.circle(self.faces.img, (x, y), 1, (0, 0, 255), -1)
+    
+    def showImage(self):
+        cv2.imshow("Landmarks", self.faces.img)
+        cv2.waitKey(0)
+
 
     @staticmethod
     def shapeToArray(shape, dtype="int"):
@@ -50,6 +59,10 @@ class LandmarkRetriever:
             coords[i] = (shape.part(i).x, shape.part(i).y)
 
         return coords
+
+def main():
+    l = LandmarkRetriever(LandmarkRetriever.IMAGE_PATH)
+
 
 
 

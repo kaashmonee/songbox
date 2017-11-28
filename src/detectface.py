@@ -29,6 +29,9 @@ class FaceDetector:
         self.gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
         self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
 
+    def getRegionsOfInterest(self):
+        pass
+
     def showFace(self):
         # if there are no faces, then it shits itself and crashes...will 
         # fix this later to ensure that it lets the user know

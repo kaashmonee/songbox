@@ -6,8 +6,9 @@ the GUI must include the following:
 	3. after taking pictures, should take you to a new page and give you results from spotify
 
 General todo list:
-1. finish gui
-2. incorporate spotify
-3. incorporate neural network
+1. get facial features
+2. train model on facial features gathered
+3. after getting happy/sad, incorporate spotify
+4. after that, work on the gui
 4. incorporate neural network syncing up with gui and spotify and hopefully everything works
 

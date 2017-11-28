@@ -3,6 +3,7 @@ from PyQt4 import QtGui, QtCore
 import cv2
 import pygame
 import pygame.camera
+import pygame.image
 import time
 # QtCore is used for event handling things
 
@@ -15,8 +16,10 @@ class SongDash(QtGui.QMainWindow):
     def __init__(self):
         super().__init__()
         # determines where on the screen it it will show up and how big the 
+        self.width = 500
+        self.height = 500
         # screen should be
-        self.setGeometry(50, 50, 500, 500)
+        self.setGeometry(5,5,self.width, self.height)
         self.actions = dict()
         self.setWindowTitle("SongBox")
         # setting a window icon (definitely change later)
@@ -52,13 +55,13 @@ class SongDash(QtGui.QMainWindow):
 
     # this is for a particular page in the GUI (the home page)
     def home(self):
-        btn = QtGui.QPushButton("Quit", self)
+        btn = QtGui.QPushButton("Take Picture", self)
         # if the button is clicked, finds instance of QCore application and 
         # quits
 
         # size hint resizes it to whatever size it thinks is appropriate
         btn.resize(btn.sizeHint())
-        btn.move(100, 100)
+        btn.move(self.width/2, self.height/2)
         # binding buttons to custom functions 
         btn.clicked.connect(self.takePicture)
         #QtCore.QCoreApplication.instance().quit)
@@ -72,6 +75,9 @@ class SongDash(QtGui.QMainWindow):
         checkBox = QtGui.QCheckBox("Check the box!")
         # it will run the printSomething function
         checkBox.stateChanged.connect(self.printSomething)
+
+    def songs(self):
+        pass
 
     def closeApplication(self):
         # print("Custom functionular region!")

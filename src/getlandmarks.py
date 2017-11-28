@@ -4,6 +4,7 @@ import imutils
 import dlib
 import cv2
 import argparse
+from src.detectface import FaceDetector
 
 
 
@@ -32,4 +33,7 @@ def shapeToArray(shape, dtype="int"):
 
 # detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(LANDMARKS_CLASSIFIER)
+
+class LandmarkRetriever:
+    def __init__(self, image):
 

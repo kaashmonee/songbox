@@ -22,38 +22,44 @@ class FaceDetector:
         )
 
         self.readImage(image)
+        # self.getFacesAndEyes()
     
     def readImage(self, image):
         self.img = cv2.imread(image)
         self.gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
 
     def showFace(self):
-        self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
         # if there are no faces, then it shits itself and crashes...will 
         # fix this later to ensure that it lets the user know
+        self.faces = self.faceCascade.detectMultiScale(self.gray, 1.3, 5)
+        print("getting here")
         if len(self.faces) == 0:
             raise Exception("Couldn't detect face in image...please select"
                             " new image!")
         
+        # print("self.faces", self.faces, "self.eyes", self.eyes)
 
         for (x, y, w, h) in self.faces:
             # creates a rectangle for all the faces in the image
+
             cv2.rectangle(self.img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # creates a gray and a color image. the roi stands for 
             # region of interest
-            roiGray = self.gray[y:y+h, x:x+w]
-            roiColor = self.img[y:y+h, x:x+w]
-            # eyes gets you the location of the eyes
-            eyes = self.eyesCascade.detectMultiScale(roiGray)
-
+            roiGray = self.gray[y:y + h, x:x + w]
+            roiColor = self.img[y:y + h, x:x + w]
             # for each x, y, w, h in the eyes, create rectangles
-            for (ex, ey, ew, eh) in eyes[:2]:
+            self.eyes = self.eyesCascade.detectMultiScale(roiGray)
+
+            for (ex, ey, ew, eh) in self.eyes[:2]:
                 cv2.rectangle(roiColor, (ex, ey), 
                              (ex+ew, ey+eh), (0, 255, 2), 2)
             # show the image
             cv2.imshow("Face", self.img)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
+
+    def hasFaces(self):
+        return True if len(self.faces) == 0 else False
     
 def main():
     f = FaceDetector("./src/assets/captures.png")
@@ -109,5 +115,5 @@ def main():
 #     cv2.destroyAllWindows()
 # """
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

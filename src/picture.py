@@ -8,6 +8,7 @@
 
 from PyQt4 import QtCore, QtGui
 import sys
+import time
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -37,9 +38,13 @@ class PictureGui(QtGui.QMainWindow):
         font.setPointSize(28)
         font.setBold(True)
         font.setWeight(75)
+
+
         self.takePictureButton.setFont(font)
         self.takePictureButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
         self.takePictureButton.setObjectName(_fromUtf8("takePictureButton"))
+
+        self.takePictureButton.clicked.connect(self.takePicture)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -47,6 +52,21 @@ class PictureGui(QtGui.QMainWindow):
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
         self.takePictureButton.setText(_translate("Form", "Take Picture", None))
+
+    def takePicture(self):
+        import pygame.camera
+        pygame.camera.init()
+        # taking the image by initializing the camera location
+        cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])
+        # sleeping
+        time.sleep(2)
+        cam.start()
+        # grabbing the image
+        img = cam.get_image()
+        import pygame.image
+        # saving the image
+        pygame.image.save(img, "./src/assets/captured.png")
+        cam.stop()
 
 
     def show(self):

@@ -28,7 +28,7 @@ except AttributeError:
 ### multiple windows
 
 
-class Ui_Form(object):
+class Ui_Form(QtGui.QMainWindow):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(753, 508)

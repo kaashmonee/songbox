@@ -22,7 +22,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class PictureGui(object):
+class PictureGui(QtGui.QMainWindow):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
         Form.setStyleSheet(_fromUtf8("background-color: rgb(0, 0, 0)"))
@@ -46,8 +46,6 @@ class PictureGui(object):
 
 
     def show(self):
-        import sys
-        app = QtGui.QApplication(sys.argv)
         Form = QtGui.QWidget()
         ui = self
         ui.setupUi(Form)
@@ -57,6 +55,10 @@ class PictureGui(object):
 
 
 if __name__ == "__main__":
+    import sys
+
+    app = QtGui.QApplication(sys.argv)
+
     obj = PictureGui()
     obj.show()
 

@@ -2,58 +2,43 @@ import pyaudio
 import wave
 import sys
 
-def main():
-    CHUNK = 1024
+class SongPlayer:
+    def __init__(self, path):
+        self.CHUNK = 1024
 
-    """
-    # not entirely sure what this is doing...
-    if len(sys.argv) < 2:
-        print("Plays a wave file. \n\nUsage: %s filename.wav" % sys.argv[0])
-        sys.exit(-1)
+        self.waveFilePath = path
+        self.wf = wave.open(self.waveFilePath, 'rb')
 
-    # opening the wave file
-    wf = wave.open(sys.argv[1], "rb")
+        # instantiate PyAudio (1)
+        self.p = pyaudio.PyAudio()
 
-    # instantiating pyaudio
-    p = pyaudio.PyAudio()
+        # open stream basically opens up a channel for playing
+        self.stream = self.p.open(format=self.p.get_format_from_width(self.wf.getsampwidth()),
+                        channels=self.wf.getnchannels(),
+                        rate=self.wf.getframerate(),
+                        output=True)
 
-    # opening a stream -- a channel with which it can 
-    """
-    CHUNK = 1024
+        # read data
+        self.data = self.wf.readframes(self.CHUNK)
 
-    """
-    if len(sys.argv) < 2:
-        print("Plays a wave file.\n\nUsage: %s filename.wav" % sys.argv[0])
-        sys.exit(-1)
-    """
+        # play stream (3)
 
-    waveFilePath = "./learnpyaudio/assets/filename.wav"
-    wf = wave.open(waveFilePath, 'rb')
+    def play(self):
+        while len(self.data) > 0:
+            self.stream.write(self.data)
+            self.data = self.wf.readframes(self.CHUNK)
 
-    # instantiate PyAudio (1)
-    p = pyaudio.PyAudio()
+        # stop stream (4)
+        self.stream.stop_stream()
+        self.stream.close()
 
-    # open stream basically opens up a channel for playing
-    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                    channels=wf.getnchannels(),
-                    rate=wf.getframerate(),
-                    output=True)
-
-    # read data
-    data = wf.readframes(CHUNK)
-
-    # play stream (3)
-    while len(data) > 0:
-        stream.write(data)
-        data = wf.readframes(CHUNK)
-
-    # stop stream (4)
-    stream.stop_stream()
-    stream.close()
-
-    # close PyAudio (5)
-    p.terminate()
+        # close PyAudio (5)
+        self.p.terminate()
     
 
+def main():
+    songPath = "./src/assets/songs/pharrelhappy.mp3"
+    player = SongPlayer(songPath)
+    player.play()
 if __name__ == "__main__":
     main()

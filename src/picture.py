@@ -9,6 +9,7 @@
 from PyQt4 import QtCore, QtGui
 import sys
 import time
+import emotion
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -72,9 +73,15 @@ class PictureGui(QtGui.QMainWindow):
         
         self.insertImage()
 
+        self.bringUpEmotionWindow()
+
     def insertImage(self):
         # for i in range(10): print(i)
         pass
+
+    def bringUpEmotionWindow(self):
+        emotionWindow = emotion.EmotionGui()
+        emotionWindow.show()
 
 
     def show(self):

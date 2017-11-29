@@ -25,12 +25,12 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class EmotionGui(QtGui.QMainWindow):
-    def __init__(self):
-        def bringUpImageAndFacialFeatures():
-            retriever = getlandmarks.LandmarkRetriever()
-            retriever.showImage()
+    # def __init__(self):
+    #     def bringUpImageAndFacialFeatures():
+    #         retriever = getlandmarks.LandmarkRetriever()
+    #         retriever.showImage()
         
-        bringUpImageAndFacialFeatures()
+    #     bringUpImageAndFacialFeatures()
 
 
     def setupUi(self, songAndEmotionPanel):

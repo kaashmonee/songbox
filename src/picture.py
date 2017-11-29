@@ -75,6 +75,8 @@ class PictureGui(QtGui.QMainWindow):
         
         self.insertImage()
 
+        self.bringUpImageAndFacialFeatures()
+
         self.bringUpEmotionWindow()
 
     def insertImage(self):

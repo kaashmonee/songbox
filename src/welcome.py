@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import picture as picGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -21,6 +22,11 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
+
+### Instatiating global variables; they are necessary here so that the app can 
+### multiple windows
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -73,6 +79,8 @@ class Ui_Form(object):
         self.getStartedButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
         self.getStartedButton.setObjectName(_fromUtf8("getStartedButton"))
         self.verticalLayout.addWidget(self.getStartedButton)
+        # adding listener upon button click
+        self.getStartedButton.clicked.connect(self.getStartedClick)
 
         # help button being initialized here
         self.helpButton = QtGui.QPushButton(self.verticalLayoutWidget)
@@ -107,6 +115,21 @@ class Ui_Form(object):
         self.getStartedButton.setText(_translate("Form", "Get Started", None))
         self.helpButton.setText(_translate("Form", "Help", None))
         self.howDoneButton.setText(_translate("Form", "How Was It Done?", None))
+
+    def getStartedClick(self):
+        # sys.exit(app.exec_())
+
+        # not sure why this line is necessary; will try running without this 
+        # line to see what happens
+        # print("reaching here")
+        # Pic = QtGui.QWidget()
+        # print("Something is happening")
+        # pictureGui = picGui.PictureGui()
+        # print("pictureGui", pictureGui)
+        # pictureGui.setupUi(Pic)
+        # Pic.show()
+        pictureGui = picGui.PictureGui()
+        pictureGui.show()
 
 
 if __name__ == "__main__":

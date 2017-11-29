@@ -47,10 +47,12 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(80, 185, 255)</string>
+       <string notr="true">background-color: rgb(0, 0, 0)
+
+</string>
       </property>
       <property name="text">
-       <string>songbox</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;songbox&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -71,7 +73,7 @@
        <string notr="true">background-color: rgb(255, 238, 0)</string>
       </property>
       <property name="text">
-       <string>Take Picture</string>
+       <string>Get Started</string>
       </property>
      </widget>
     </item>

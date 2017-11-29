@@ -4,3 +4,6 @@ Attempted term project for 15-112, Fundamentals of Programming and Computer Scie
 ## Installation
 To install, run `pip install -r dependencies.txt` to ensure that
 your system has all the necessary modules and packages.
+
+## Usage
+To run, please run the `welcome.py` file.

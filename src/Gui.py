@@ -54,7 +54,7 @@ class SongDash(QtGui.QMainWindow):
     def _show(self): self.show()
 
     # this is for a particular page in the GUI (the home page)
-    def home(self):
+    def home(self): 
         btn = QtGui.QPushButton("Take Picture", self)
         # if the button is clicked, finds instance of QCore application and 
         # quits

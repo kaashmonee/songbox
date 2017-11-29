@@ -10,6 +10,8 @@ from PyQt4 import QtCore, QtGui
 import sys
 import time
 import emotion
+import getlandmarks
+from threading import Thread
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -82,6 +84,10 @@ class PictureGui(QtGui.QMainWindow):
     def bringUpEmotionWindow(self):
         emotionWindow = emotion.EmotionGui()
         emotionWindow.show()
+
+    def bringUpImageAndFacialFeatures(self):
+        retriever = getlandmarks.LandmarkRetriever()
+        retriever.showImage()
 
 
     def show(self):

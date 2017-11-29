@@ -8,6 +8,7 @@
 
 from PyQt4 import QtCore, QtGui
 import songplayer
+import getlandmarks
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -24,6 +25,14 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class EmotionGui(QtGui.QMainWindow):
+    def __init__(self):
+        def bringUpImageAndFacialFeatures():
+            retriever = getlandmarks.LandmarkRetriever()
+            retriever.showImage()
+        
+        bringUpImageAndFacialFeatures()
+
+
     def setupUi(self, songAndEmotionPanel):
         songAndEmotionPanel.setObjectName(_fromUtf8("songAndEmotionPanel"))
         songAndEmotionPanel.resize(661, 498)

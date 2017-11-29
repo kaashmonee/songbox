@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import songplayer
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -68,6 +69,8 @@ class EmotionGui(QtGui.QMainWindow):
 "color: \"white\";\n"
 "font: \"nimbus mono\";"))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        # adding listener
+        self.pushButton.clicked.connect(self.playSong)
 
         self.retranslateUi(songAndEmotionPanel)
         QtCore.QMetaObject.connectSlotsByName(songAndEmotionPanel)
@@ -87,7 +90,9 @@ class EmotionGui(QtGui.QMainWindow):
         sys.exit(app.exec_())
 
     def playSong(self):
-        
+        songPath = "./src/assets/songs/happy/pharrelhappy.wav"
+        player = songplayer.SongPlayer(songPath)
+        player.play()
 
 if __name__ == "__main__":
     # import sys

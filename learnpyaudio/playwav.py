@@ -3,10 +3,10 @@ import wave
 import sys
 
 class SongPlayer:
-    def __init__(self):
+    def __init__(self, path):
         self.CHUNK = 1024
 
-        self.waveFilePath = "./learnpyaudio/assets/filename.wav"
+        self.waveFilePath = path
         self.wf = wave.open(self.waveFilePath, 'rb')
 
         # instantiate PyAudio (1)
@@ -37,7 +37,8 @@ class SongPlayer:
     
 
 def main():
-    player = SongPlayer()
+    songPath = "./src/assets/songs/pharrelhappy.mp3"
+    player = SongPlayer(songPath)
     player.play()
 if __name__ == "__main__":
     main()

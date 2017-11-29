@@ -73,7 +73,7 @@ class PictureGui(QtGui.QMainWindow):
         self.insertImage()
 
     def insertImage(self):
-        pass
+        for i in range(10): print(i)
 
 
     def show(self):

@@ -22,7 +22,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_songAndEmotionPanel(object):
+class EmotionGui(QtGui.QMainWindow):
     def setupUi(self, songAndEmotionPanel):
         songAndEmotionPanel.setObjectName(_fromUtf8("songAndEmotionPanel"))
         songAndEmotionPanel.resize(661, 498)
@@ -79,13 +79,28 @@ class Ui_songAndEmotionPanel(object):
         self.checkBox.setText(_translate("songAndEmotionPanel", "Play", None))
         self.pushButton.setText(_translate("songAndEmotionPanel", "Click to Play Selected", None))
 
+    def show(self):
+        Form = QtGui.QWidget()
+        ui = self
+        ui.setupUi(Form)
+        Form.show()
+        sys.exit(app.exec_())
+
+    def playSong(self):
+        
 
 if __name__ == "__main__":
+    # import sys
+    # app = QtGui.QApplication(sys.argv)
+    # songAndEmotionPanel = QtGui.QWidget()
+    # ui = Ui_songAndEmotionPanel()
+    # ui.setupUi(songAndEmotionPanel)
+    # songAndEmotionPanel.show()
+    # sys.exit(app.exec_())
     import sys
+    global app
     app = QtGui.QApplication(sys.argv)
-    songAndEmotionPanel = QtGui.QWidget()
-    ui = Ui_songAndEmotionPanel()
-    ui.setupUi(songAndEmotionPanel)
-    songAndEmotionPanel.show()
-    sys.exit(app.exec_())
+
+    obj = EmotionGui()
+    obj.show()
 

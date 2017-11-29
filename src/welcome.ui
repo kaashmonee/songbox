@@ -55,7 +55,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="takePictureButton">
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
@@ -69,7 +69,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="helpButton">
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
@@ -83,7 +83,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="howDoneButton">
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
@@ -92,7 +92,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Contact Us</string>
+       <string>How Was It Done?</string>
       </property>
      </widget>
     </item>

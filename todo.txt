@@ -12,3 +12,7 @@ General todo list:
 4. after that, work on the gui
 4. incorporate neural network syncing up with gui and spotify and hopefully everything works
 
+things to do for tp2:
+1. get each button working
+2. create windows for each button and have that working
+3. after picture is taken and analysis is complete, it will play a song for us

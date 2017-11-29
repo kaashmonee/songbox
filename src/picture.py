@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -21,6 +22,9 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
+# APP
+
 
 class PictureGui(QtGui.QMainWindow):
     def setupUi(self, Form):
@@ -55,8 +59,8 @@ class PictureGui(QtGui.QMainWindow):
 
 
 if __name__ == "__main__":
-    import sys
 
+    global app
     app = QtGui.QApplication(sys.argv)
 
     obj = PictureGui()

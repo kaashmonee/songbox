@@ -8,6 +8,7 @@
 
 from PyQt4 import QtCore, QtGui
 import picture as picGui
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -117,23 +118,14 @@ class Ui_Form(QtGui.QMainWindow):
         self.howDoneButton.setText(_translate("Form", "How Was It Done?", None))
 
     def getStartedClick(self):
-        # sys.exit(app.exec_())
-
-        # not sure why this line is necessary; will try running without this 
-        # line to see what happens
-        # print("reaching here")
-        # Pic = QtGui.QWidget()
-        # print("Something is happening")
-        # pictureGui = picGui.PictureGui()
-        # print("pictureGui", pictureGui)
-        # pictureGui.setupUi(Pic)
-        # Pic.show()
         pictureGui = picGui.PictureGui()
         pictureGui.show()
+        self.hide()
 
 
 if __name__ == "__main__":
     import sys
+    global app 
     app = QtGui.QApplication(sys.argv)
     Form = QtGui.QWidget()
     ui = Ui_Form()

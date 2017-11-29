@@ -72,9 +72,10 @@ class SongDash(QtGui.QMainWindow):
         # self.toolBar.addAction(getChe)
 
         # checkbox
-        checkBox = QtGui.QCheckBox("Check the box!")
+        checkBox = QtGui.QCheckBox("Check the box!", self)
         # it will run the printSomething function
-        checkBox.stateChanged.connect(self.printSomething)
+        checkBox.move(100, 25)
+        checkBox.stateChanged.connect(self.enlargeWindow)
 
     def songs(self):
         pass
@@ -98,10 +99,14 @@ class SongDash(QtGui.QMainWindow):
         btn.move(200, 200)
         btn.resize(btn.sizeHint())
 
-    def printSomething(self):
+    def enlargeWindow(self, state):
         label = QtGui.QLabel()
         label.setText("Testing label!")
         label.setAlignment(Qt.AlignCenter)
+        if state == QtCore.Qt.Checked:
+            self.setGeometry(50, 50, 1000, 60)
+        else:
+            self.setGeometry(50, 50, 500, 300)
 
     def takePicture(self):
         import pygame.camera

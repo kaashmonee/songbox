@@ -32,7 +32,7 @@ class PictureGui(QtGui.QMainWindow):
         Form.setObjectName(_fromUtf8("Form"))
         Form.setStyleSheet(_fromUtf8("background-color: rgb(0, 0, 0)"))
         self.takePictureButton = QtGui.QPushButton(Form)
-        self.takePictureButton.setGeometry(QtCore.QRect(0, 350, 761, 54))
+        self.takePictureButton.setGeometry(QtCore.QRect(0, 200, 751, 57))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Nimbus Mono L"))
         font.setPointSize(28)
@@ -44,6 +44,7 @@ class PictureGui(QtGui.QMainWindow):
         self.takePictureButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
         self.takePictureButton.setObjectName(_fromUtf8("takePictureButton"))
 
+        self.Form = Form
         self.takePictureButton.clicked.connect(self.takePicture)
 
         self.retranslateUi(Form)
@@ -55,6 +56,7 @@ class PictureGui(QtGui.QMainWindow):
 
     def takePicture(self):
         import pygame.camera
+        # print(Form)
         pygame.camera.init()
         # taking the image by initializing the camera location
         cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])
@@ -67,6 +69,11 @@ class PictureGui(QtGui.QMainWindow):
         # saving the image
         pygame.image.save(img, "./src/assets/captured.png")
         cam.stop()
+        
+        self.insertImage()
+
+    def insertImage(self):
+        pass
 
 
     def show(self):

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>753</width>
     <height>508</height>
    </rect>
   </property>
@@ -46,6 +46,9 @@
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(80, 185, 255)</string>
+      </property>
       <property name="text">
        <string>songbox</string>
       </property>
@@ -59,9 +62,13 @@
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
+        <pointsize>28</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 238, 0)</string>
       </property>
       <property name="text">
        <string>Take Picture</string>
@@ -73,9 +80,13 @@
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
+        <pointsize>28</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 238, 0)</string>
       </property>
       <property name="text">
        <string>Help</string>
@@ -87,9 +98,13 @@
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>
+        <pointsize>28</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 238, 0)</string>
       </property>
       <property name="text">
        <string>How Was It Done?</string>

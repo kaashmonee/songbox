@@ -29,12 +29,19 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(28)
         Form.setFont(font)
+
+        # vertical layout widget
         self.verticalLayoutWidget = QtGui.QWidget(Form)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 751, 511))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+
+        # this is kind of weird; puts a vertical layout widget on a label...
+        # investiage further
+
         self.label = QtGui.QLabel(self.verticalLayoutWidget)
+        # setting font sizes and font families and what have you
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Nimbus Mono L"))
         font.setPointSize(72)
@@ -43,22 +50,31 @@ class Ui_Form(object):
         font.setUnderline(False)
         font.setWeight(75)
         self.label.setFont(font)
+
+        # not sure what this line does.
         self.label.setMouseTracking(True)
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label.setStyleSheet(_fromUtf8("background-color: rgb(80, 185, 255)"))
+        self.label.setStyleSheet(_fromUtf8("background-color: rgb(0, 0, 0)\n"
+"\n"
+""))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout.addWidget(self.label)
-        self.takePictureButton = QtGui.QPushButton(self.verticalLayoutWidget)
+
+
+        # get started button being initialized here
+        self.getStartedButton = QtGui.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Nimbus Mono L"))
         font.setPointSize(28)
         font.setBold(True)
         font.setWeight(75)
-        self.takePictureButton.setFont(font)
-        self.takePictureButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
-        self.takePictureButton.setObjectName(_fromUtf8("takePictureButton"))
-        self.verticalLayout.addWidget(self.takePictureButton)
+        self.getStartedButton.setFont(font)
+        self.getStartedButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
+        self.getStartedButton.setObjectName(_fromUtf8("getStartedButton"))
+        self.verticalLayout.addWidget(self.getStartedButton)
+
+        # help button being initialized here
         self.helpButton = QtGui.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Nimbus Mono L"))
@@ -69,6 +85,8 @@ class Ui_Form(object):
         self.helpButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 238, 0)"))
         self.helpButton.setObjectName(_fromUtf8("helpButton"))
         self.verticalLayout.addWidget(self.helpButton)
+
+        # how done button being initialized here
         self.howDoneButton = QtGui.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Nimbus Mono L"))
@@ -85,8 +103,8 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
-        self.label.setText(_translate("Form", "songbox", None))
-        self.takePictureButton.setText(_translate("Form", "Take Picture", None))
+        self.label.setText(_translate("Form", "<html><head/><body><p><span style=\" color:#ffffff;\">songbox</span></p></body></html>", None))
+        self.getStartedButton.setText(_translate("Form", "Get Started", None))
         self.helpButton.setText(_translate("Form", "Help", None))
         self.howDoneButton.setText(_translate("Form", "How Was It Done?", None))
 

@@ -60,7 +60,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="takePictureButton">
+     <widget class="QPushButton" name="getStartedButton">
       <property name="font">
        <font>
         <family>Nimbus Mono L</family>

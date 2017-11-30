@@ -6,4 +6,4 @@ To install, run `pip install -r dependencies.txt` to ensure that
 your system has all the necessary modules and packages.
 
 ## Usage
-To run, please run the `welcome.py` file.
+To run, please run `python3 welcome.py`.

@@ -30,7 +30,7 @@ except AttributeError:
 
 
 class Ui_Form(QtGui.QMainWindow):
-    def setupUi(self, Form):
+    def setupUiMain(self, Form):
         # sets the object name. Form is the QWidget that is passed in.
         # QWidgets is just the thing that everyhing is added to, kind of like 
         # a canvas.
@@ -125,6 +125,44 @@ class Ui_Form(QtGui.QMainWindow):
         pictureGui = picGui.PictureGui()
         pictureGui.show()
         self.hide()
+
+    def setupUiPictureGui(self, Form):
+        # code from the picture gui here
+
+    def retranslateUi(self, Form):
+        # code from retranslate here (not actually sure what it does)
+
+    def takePicture(self):
+        import pygame.camera
+        # init the camera
+        pygame.camera.init()
+        # taking the picture by init the camera location 
+        # i suspect once i get opencv working, this function will become obsolet
+        cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])
+        # sleeping -- giving time for the camera to warm upon
+        time.sleep()
+        cam.start()
+        # grabbing hte image
+        img = cam.get_image()
+        import pygame.image
+        pygame.image.save(img, "./src/assets/captured.png")
+        cam.stop()
+
+        self.insertImage()
+
+        self.bringUpImageAndFacialFeatures(self)
+
+        self.bringUpEmotionWindow()
+
+    def bringUpEmotionWindow(self):
+        emotionWindow = emotion.EmotionGui()
+        emotionWindow.show()
+
+    def bringUpImageAndFacialFeatures(self):
+        retriever = getlandmarks.LandmarksRetriever()
+        retriever.showImage()
+
+
 
 
 if __name__ == "__main__":

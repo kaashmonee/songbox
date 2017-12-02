@@ -29,7 +29,7 @@ class LandmarkRetriever:
 
     # class attributes
     LANDMARKS_CLASSIFIER = "./src/assets/shape_predictor_68_face_landmarks.dat"
-    IMAGE_PATH = "./src/assets/captures.png"
+    IMAGE_PATH = "./src/assets/captured.png"
     predictor = dlib.shape_predictor(LANDMARKS_CLASSIFIER)
 
 

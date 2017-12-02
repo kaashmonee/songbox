@@ -128,9 +128,11 @@ class Ui_Form(QtGui.QMainWindow):
 
     def setupUiPictureGui(self, Form):
         # code from the picture gui here
+        pass
 
     def retranslateUi(self, Form):
         # code from retranslate here (not actually sure what it does)
+        pass
 
     def takePicture(self):
         import pygame.camera
@@ -162,6 +164,15 @@ class Ui_Form(QtGui.QMainWindow):
         retriever = getlandmarks.LandmarksRetriever()
         retriever.showImage()
 
+    def runWhichForm(self, Form):
+        import sys
+        global app
+        app = QtGui.QApplication(sys.argv)
+        ui = Ui_Form()
+        ui.setupUi(Form)
+        Form.show()
+        sys.exit(app.exe_())
+
 
 
 
@@ -171,7 +182,7 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     Form = QtGui.QWidget()
     ui = Ui_Form()
-    ui.setupUi(Form)
+    ui.setupUiMain(Form)
     Form.show()
     sys.exit(app.exec_())
 

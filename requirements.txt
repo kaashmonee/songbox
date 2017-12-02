@@ -1,0 +1,8 @@
+numpy==1.11.0
+matplotlib==1.5.1
+PyQt4==4.11.4
+dlib==19.7.0
+imutils==0.4.3
+pyaudio==0.2.11
+pygame==1.9.3
+tensorflow==1.4.0

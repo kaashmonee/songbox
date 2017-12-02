@@ -81,7 +81,7 @@ class FaceDetector:
         return self.roiGray
     
 def main():
-    f = FaceDetector("./src/assets/captures.png")
+    f = FaceDetector("./src/assets/captured.png")
     print(f.getROIColor, f.getROIGray)
     f.showFace()
 

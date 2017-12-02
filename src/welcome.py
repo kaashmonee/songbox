@@ -31,6 +31,10 @@ except AttributeError:
 
 class Ui_Form(QtGui.QMainWindow):
     def setupUi(self, Form):
+        # sets the object name. Form is the QWidget that is passed in.
+        # QWidgets is just the thing that everyhing is added to, kind of like 
+        # a canvas.
+        print("Form type: ", type(Form))
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(753, 508)
         font = QtGui.QFont()

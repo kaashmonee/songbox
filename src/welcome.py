@@ -31,6 +31,8 @@ except AttributeError:
 
 class Ui_Form(QtGui.QMainWindow):
     def setupUiMain(self, Form):
+        self.Form = Form
+        # Form = self.Form
         # sets the object name. Form is the QWidget that is passed in.
         # QWidgets is just the thing that everyhing is added to, kind of like 
         # a canvas.
@@ -42,6 +44,7 @@ class Ui_Form(QtGui.QMainWindow):
         Form.setFont(font)
 
         # vertical layout widget
+        print("Getting to vertical layout part")
         self.verticalLayoutWidget = QtGui.QWidget(Form)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 751, 511))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
@@ -111,10 +114,10 @@ class Ui_Form(QtGui.QMainWindow):
         self.howDoneButton.setObjectName(_fromUtf8("howDoneButton"))
         self.verticalLayout.addWidget(self.howDoneButton)
 
-        self.retranslateUi(Form)
+        self.retranslateMainUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form):
+    def retranslateMainUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
         self.label.setText(_translate("Form", "<html><head/><body><p><span style=\" color:#ffffff;\">songbox</span></p></body></html>", None))
         self.getStartedButton.setText(_translate("Form", "Get Started", None))
@@ -122,16 +125,42 @@ class Ui_Form(QtGui.QMainWindow):
         self.howDoneButton.setText(_translate("Form", "How Was It Done?", None))
 
     def getStartedClick(self):
-        pictureGui = picGui.PictureGui()
-        pictureGui.show()
-        self.hide()
+        # pictureGui = picGui.PictureGui()
+        # pictureGui.show()
+        # self.hide()
+        self.Form = QtGui.QWidget()
+        self.setupUiPictureGui(self.Form)
+        # self.Form.show()
 
     def setupUiPictureGui(self, Form):
-        # code from the picture gui here
-        pass
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.setStyleSheet(_fromUtf8("background-color: rgb(0, 0, 0)"))
+        self.takePictureButton = QtGui.QPushButton(Form)
+        self.takePictureButton.setGeometry(QtCore.QRect(0, 200, 751, 57))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Nimbus Mono L"))
+        font.setPointSize(28)
+        font.setBold(True)
+        font.setWeight(75)
 
-    def retranslateUi(self, Form):
-        # code from retranslate here (not actually sure what it does)
+        self.takePictureButton.setFont(font)
+        self.takePictureButton.setStyleSheet(
+            _fromUtf8("background-color: rgb(255, 238, 0)"))
+        self.takePictureButton.setObjectName(_fromUtf8("takePictureButton"))
+
+        self.Form = Form
+        self.takePictureButton.clicked.connect(self.takePicture)
+
+        self.retranslatePictureUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslatePictureUi(self, Form):
+        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.takePictureButton.setText(
+            _translate("Form", "Take Picture", None))
+
+    def retranslateEmotionUi(self, Form):
+        # code to add the labels for the emotion pane
         pass
 
     def takePicture(self):

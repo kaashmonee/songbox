@@ -28,11 +28,38 @@ class NeuralNetwork:
         Y_ = tf.placeholder(tf.float32, [None, 10])
 
         # loss function
-        crossEntropy = -tf.reduce_sum(Y * tf.log(Y))
+        # this is the function we are trying to minimize with gradient descent
+        # Y*tf.log(Y) is 
+        crossEntropy = -tf.reduce_sum(Y_ * tf.log(Y))
 
         # % of correct answers found in the batch
+        # not 100% sure how these work, so will skip for now
         isCorrect = tf.equal(tf.argmax(Y, 1), tf.argmax(Y_, 1))
         accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+
+        # this will 
+        optimizer = tf.train.GradientDescentOptimizer(0.003)
+        trainStep = optimizer.minimize(crossEntropy)
+        
+        # init
+        # initializes global variables in the graph
+        # how to handle this if we don't have global variables?
+        init = tf.global_variables_initializer()
+        sess = tf.Session()
+        sess.run(init)
+
+    def trainingStep(i, updateTestData, updateTrainData):
+        
+        # loading the images and the correct answers
+        # they're being trained in batches of 100
+        batchX, batchY = mnist.train.next_batch(100)
+        trainData = {X: batchX, Y_: batchY}
+
+        # training!
+        if updateTrainData:
+            
+        sess.run(trainStep, feed_dict=trainData)
+
 
 
 

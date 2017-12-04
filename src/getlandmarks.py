@@ -82,6 +82,7 @@ def main():
     # sys.exit(0)
     l = LandmarkRetriever(LandmarkRetriever.IMAGE_PATH)
     l.showImage()
+    
 
 if __name__ == "__main__":
     main()

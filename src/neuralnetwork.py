@@ -14,6 +14,10 @@ class NeuralNetwork:
 
         self.init = tf.initialize_all_variables()
 
+    def preprocessData(self):
+        # preprocess the data
+        pass
+
     def buildModel(self):
         # builds the model
         # this reshapes self.X into a 2d tensor, multiplies it by the weights 
@@ -48,6 +52,9 @@ class NeuralNetwork:
     
     def train(self):
         # train model
+
+    def preprocessData(self):
+        # preprocess the data
     
     def test(self, test):
         return trainedValue # this is what I imagine such a neural network might

@@ -4,6 +4,8 @@ import imutils
 import dlib
 import cv2
 import argparse
+import os
+import sys
 from detectface import FaceDetector
 
 
@@ -49,8 +51,10 @@ class LandmarkRetriever:
             print("Getting here")
             self.faceCoordinates = LandmarkRetriever.shapeToArray(shape)
             for (x, y) in LandmarkRetriever.shapeToArray(shape):
-                print("x:", x, "y:", y)
+                # print("x:", x, "y:", y)
                 cv2.circle(self.facesImage.img, (x, y), 1, (0, 0, 255), -1)
+
+        return self.faceCoordinates
     
     def showImage(self):
         cv2.imshow("Landmarks", self.facesImage.img)
@@ -69,8 +73,13 @@ class LandmarkRetriever:
 
         return coords
 
+    # def getLandmarkArray(self):
+
+
 def main():
     # import sys; print(sys.version_info)
+    print(os.getcwd())
+    # sys.exit(0)
     l = LandmarkRetriever(LandmarkRetriever.IMAGE_PATH)
     l.showImage()
 

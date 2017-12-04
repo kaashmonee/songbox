@@ -34,6 +34,7 @@ class DataGetter:
                     # keeps going until picture is successfully taken
                     landmarks = ""
                     retriever = ""
+                    # this block keeps going until failure
                     while True:
                         try:
                             utils.takePicture("./assets/temp.png")

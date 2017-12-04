@@ -1,4 +1,5 @@
 import utils
+import csv
 
 class DataGetter:
 
@@ -9,15 +10,16 @@ class DataGetter:
     def __init__(self):
         pass
 
+
     def getDataFromCamera(self):
-        numPics = input("How many pictures would you like to take?")
-        curPic = 1
-        while curPic < numPics:
-            print("Taking picture")
+        # 
+        for key in possibleEmotions:
+            print("Taking picture in 2 seconds! Please make this face:", key)
             pic = utils.takePicture(False)
             print("Picture", curPic, "taken")
             emotionNum = input("Please select emotion:\nangry=0\ndisgust=1"
                                "\nfear=2\nhappy=3\nsad=4\nsurprise=5\nneutral=6")
+            
             
             
 

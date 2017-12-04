@@ -20,7 +20,8 @@ data, labels = load_csv(titanicDatabasePath, target_column=0,
 
 def preprocess(data, columns_to_ignore):
     for id in sorted(columns_to_ignore, reverse=True):
-        [r.pop(id) for r in data]
+        # [r.pop(id) for r in data]
+        for r in data: r.pop(id)
     for i in range(len(data)):
         # converting sex field to float (id is 1 after removing labels column)
         data[i][1] = 1. if data[i][1] == "female" else 0.

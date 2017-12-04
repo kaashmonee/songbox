@@ -1,5 +1,7 @@
 learncv/.vscode
 .vscode/
 env/
+learntf/tensorflow-mnist-tutorial/
+learntf/titanic_dataset.csv
 src/assets/cameradata.csv
 src/assets/temp.png

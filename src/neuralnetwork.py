@@ -52,9 +52,11 @@ class NeuralNetwork:
     
     def train(self):
         # train model
+        pass
 
     def preprocessData(self):
         # preprocess the data
+        pass
     
     def test(self, test):
         return trainedValue # this is what I imagine such a neural network might

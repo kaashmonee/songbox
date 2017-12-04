@@ -6,3 +6,5 @@ imutils==0.4.3
 pyaudio==0.2.11
 pygame==1.9.3
 tensorflow==1.4.0
+tflearn==0.3.2
+welcome==0.0.1

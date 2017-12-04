@@ -1,10 +1,11 @@
 import tensorflow as tf
+import sys
 
 class NeuralNetwork:
 
     def __init__(self):
         # creating a neural network to train data gathered from facial features
-        self.X = tf.placeholder(tf.float32, [None, 28, 28, 1])
+        self.X = tf.placeholder(tf.float32, [None, 28, 28, 1], shape=())
         # learning training for mnist dataset, where images are 28x28
         # None is the number of images in the batch, and that is unkown at this time; 
         # will be known during time of training
@@ -21,11 +22,11 @@ class NeuralNetwork:
         # after adding the biases, applies the softmax activation function
         # you can think of the activation function as the function required to 
         # activate the neuron 
-        Y = tf.nn.softmax(tf.matmul(tf.reshape(self.X, [-1, 784]), W) + b)
+        Y = tf.nn.softmax(tf.matmul(tf.reshape(self.X, [-1, 784]), self.W) + self.b)
         print("Y:", Y)
         sys.exit()
         # placeholder for the correct labels
-        Y_ = tf.placeholder(tf.float32, [None, 10])
+        Y_ = tf.placeholder(tf.float32, [None, 10], shape=())
 
         # loss function
         # this is the function we are trying to minimize with gradient descent
@@ -40,6 +41,8 @@ class NeuralNetwork:
         # this will 
         optimizer = tf.train.GradientDescentOptimizer(0.003)
         trainStep = optimizer.minimize(crossEntropy)
+        print("Type of trainstep:", type(trainStep))
+        print("optimizer.minimize", trainStep)
         
         # init
         # initializes global variables in the graph
@@ -56,12 +59,20 @@ class NeuralNetwork:
         trainData = {X: batchX, Y_: batchY}
 
         # training!
+        # if updateTrainData is not None or False,
         if updateTrainData:
-            
+            # not exactly sure what a, c, im, w, and b are.
+            a, c, im, w, b = sess.run([accuracy, crossEntropy, I, allweights, 
+                                       allbiases], feed_dict={X: batchX, 
+                                                              Y_: batchY})
+
         sess.run(trainStep, feed_dict=trainData)
 
 
 
+def main():
+    n = NeuralNetwork()
+    n.buildModel()
 
-n = NeuralNetwork()
-n.buildModel()
+if __name__ == "__main__":
+    main()

@@ -7,11 +7,11 @@ import dlib
 
 class FaceDetector:
     FACE_CASCADE_CLASSIFIER_PATH = (
-        "./learncv/assets/classifiers/haarcascade_frontalface_default.xml"
+        "../learncv/assets/classifiers/haarcascade_frontalface_default.xml"
     )
 
     EYE_CASCADE_CLASSIFIER_PATH = (
-        "./learncv/assets/classifiers/haarcascade_eye.xml"
+        "../learncv/assets/classifiers/haarcascade_eye.xml"
     )
 
     # getting the frontal face detector
@@ -81,7 +81,8 @@ class FaceDetector:
         return self.roiGray
     
 def main():
-    f = FaceDetector("./src/assets/captured.png")
+    # current path is in src
+    f = FaceDetector("./assets/captured.png")
     print(f.getROIColor, f.getROIGray)
     f.showFace()
 

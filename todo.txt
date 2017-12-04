@@ -16,3 +16,17 @@ things to do for tp2:
 1. get each button working
 2. create windows for each button and have that working
 3. after picture is taken and analysis is complete, it will play a song for us
+
+
+things to do for 12/3:
+1. finish up the gui, make it all work in one go
+2. come up with a shell for which you know the tensorflow code will go
+3. begin tensorflow analysis
+
+things to do for 12/3
+1. try to do this link
+https://www.oreilly.com/learning/hello-tensorflow (it might be
+helpful, but i'm not really sure.)
+
+i'm first going to try to get opencv to detect and pull up the
+faces from the training data that i downloaded

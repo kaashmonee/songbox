@@ -1,3 +1,5 @@
+import time
+
 def takePicture(savePic):
     import pygame.camera
     # print(Form)

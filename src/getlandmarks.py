@@ -30,8 +30,8 @@ from detectface import FaceDetector
 class LandmarkRetriever:
 
     # class attributes
-    LANDMARKS_CLASSIFIER = "./src/assets/shape_predictor_68_face_landmarks.dat"
-    IMAGE_PATH = "./src/assets/captured.png"
+    LANDMARKS_CLASSIFIER = "./assets/shape_predictor_68_face_landmarks.dat"
+    IMAGE_PATH = "./assets/captured.png"
     predictor = dlib.shape_predictor(LANDMARKS_CLASSIFIER)
 
 

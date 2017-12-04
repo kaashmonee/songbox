@@ -45,6 +45,12 @@ n.buildModel()
 
 
 class NeuralNetwork:
+
+    DATASET = "./assets/cameradata.csv"
+
+    def importData(self):
+        df = pd.read_csv(NeuralNetwork.DATASET)
+        
     
     def buildNetwork(self):
         pass

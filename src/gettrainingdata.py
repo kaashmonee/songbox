@@ -45,7 +45,7 @@ class DataGetter:
                             landmarks = retriever.getLandmarks()
                         except Exception as e:
                             print("No face deteced! Trying again!")
-                            time.sleep(2)
+                            # time.sleep(2)
                             continue
                         break
 

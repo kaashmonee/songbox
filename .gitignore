@@ -1,3 +1,5 @@
 learncv/.vscode
 .vscode/
 env/
+src/assets/cameradata.csv
+src/assets/temp.png

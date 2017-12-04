@@ -10,7 +10,7 @@ class DataGetter:
     # (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral)
 
     # path to add camera captured data to
-    csvPath = "./src/assets/cameradata.csv"
+    csvPath = "./assets/cameradata.csv"
     
     def __init__(self):
         pass

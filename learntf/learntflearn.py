@@ -16,5 +16,17 @@ data.labels = load_csv("titanic_database.csv", target_column=0,
 
 # not sure what the n_classes is...
 
+def preprocess(data, columns_to_ignore):
+    for id in sorted(columns_to_ignore, reverse=True):
+        [r.pop(id) for r in data]
+    for i in range(len(data)):
+        # converting sex field to float (id is 1 after removing labels column)
+        data[i][1] = 1. if data[i][1] == "female" else 0.
+    
+    return np.array(data, dtype=np.float32)
 
+to_ignore = [1, 6]
+
+# preprocess data
+data = preprocess(data, to_ignore)
 

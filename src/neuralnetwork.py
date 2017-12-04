@@ -38,3 +38,17 @@ class NeuralNetwork:
 
 n = NeuralNetwork()
 n.buildModel()
+
+
+class NeuralNetwork:
+    
+    def buildNetwork(self):
+        pass
+        # code to buildModel
+    
+    def train(self):
+        # train model
+    
+    def test(self, test):
+        return trainedValue # this is what I imagine such a neural network might
+        # look like

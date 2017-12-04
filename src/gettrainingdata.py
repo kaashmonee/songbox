@@ -2,6 +2,7 @@ import utils
 import csv
 import time
 import os
+from getlandmarks import LandmarkRetriever
 
 class DataGetter:
 
@@ -17,16 +18,24 @@ class DataGetter:
 
 
     def getDataFromCamera(self):
-        ctr = 0
-        
-        for key in DataGetter.possibleEmotions:
-            print("Taking picture in 2 seconds! Please make this face:", key)
-            pic = utils.takePicture(False)
-            print("Picture", ctr, "taken")
-            # emotionNum = input("Please select emotion:\nangry=0\ndisgust=1"
-            #                    "\nfear=2\nhappy=3\nsad=4\nsurprise=5\nneutral=6")
 
-            ctr += 1
+        # opening csv csvFile
+        with open(DataGetter.csvPath, "w") as csvFile:
+            # looping through possible emotions, taking picture, analyzing, and 
+            # writing to csv file
+            for key in DataGetter.possibleEmotions:
+                print("Taking picture in 2 seconds! Please make this face:", key)
+                utils.takePicture("./assets/temp.png")
+                print("Picture", DataGetter.possibleEmotions[key], "taken")
+                # emotionNum = input("Please select emotion:\nangry=0\ndisgust=1"
+                #                    "\nfear=2\nhappy=3\nsad=4\nsurprise=5\nneutral=6")
+                retriever = LandmarkRetriever("./assets/temp.png")
+                landmarks = retriever.getLandmarks()
+
+                csv.writer(csvFile).writerow([landmarks] + [DataGetter.possibleEmotions[key]])
+        
+        
+
 
 
 

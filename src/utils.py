@@ -1,6 +1,6 @@
 import time
 
-def takePicture(savePic):
+def takePicture(path="./assets/captured.png"):
     import pygame.camera
     # print(Form)
     pygame.camera.init()
@@ -13,6 +13,6 @@ def takePicture(savePic):
     img = cam.get_image()
     import pygame.image
     # saving the image if the user wants to save it. otherwise, it is returned
-    if savePic: pygame.image.save(img, "./src/assets/captured.png")
+    pygame.image.save(img, path)
     cam.stop()
     return img

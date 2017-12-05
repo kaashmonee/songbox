@@ -1,5 +1,5 @@
 # Songbox
-Attempted term project for 15-112, Fundamentals of Programming and Computer Science offered at Carnegie Mellon University.
+Attempts to detect facial expressions and find music based on facial expression.
 
 ## Installation
 To install, run `pip install -r requirements.txt` to ensure that
